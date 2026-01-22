@@ -1,62 +1,99 @@
 package Tree;
 
 public class BinaryTree {
-     private Node root;
-    public BinaryTree(int rootValue) {
-        root = new Node(rootValue,null,null);
+    private Node root;
+
+    public BinaryTree( int rootValue) {
+        root=new Node(rootValue,null,null);
 
     }
-    private void insert(Node newnode,Node root){
 
-        if (newnode.getValue()> root.getValue()){
+    private void insert(Node newnode, Node root) {
+        if(newnode.getValue()>root.getValue()){
             if(root.getRight()==null)
                 root.setRight(newnode);
             else {
                 insert(newnode,root.right);
             }
         }
-        else if (newnode.getValue()< root.getValue()){
-            if (root.getLeft()==null)
+        else if(newnode.getValue()<root.getValue()){
+            if(root.getLeft()==null)
                 root.setLeft(newnode);
             else {
                 insert(newnode,root.left);
             }
         }
         else {
-            System.out.println("Cant insert dulicated value");
+            System.out.println("cant insert dulicated value");
         }
+
     }
-    public void insertNoda(int value){
+
+    public void insertNode(int value){
         Node newNode=new Node(value,null,null);
         insert(newNode,root);
     }
 
-    private boolean search(int value,Node root){
-        if (root==null) return false;
 
-        if (value> root.getValue()){
-           return search(value,root.getRight());
-        }
-    else if (value< root.getValue()) {
-       return search(value,root.getLeft());
-        }
-    else return true;
+    private boolean search(int value, Node root){
+        if(root==null) return false;
+
+        if(value> root.getValue())
+            return   search(value,root.getRight());
+
+        else if(value< root.getValue())
+            return search(value,root.getLeft());
+
+        else return true;
     }
-    public boolean searchNode(int value){
-         return search(value,root);
+
+    public boolean serachNode(int value){
+        return search(value,root);
     }
+
     private void preOrderT(Node node){
-        if (root==null){
+        if(node==null) {
             return;
         }
-        System.out.println(node.getValue()+" ");
+        System.out.print(node.getValue()+" ");
         preOrderT(node.getLeft());
-        preOrderT(node.getLeft());
+        preOrderT(node.getRight());
     }
-    public void preOrder(){
+    public void preorder(){
         preOrderT(root);
-    System.out.println();
+        System.out.println();
     }
+
+    private void inOrderT(Node node){
+        if(node==null) {
+            return;
+        }
+        inOrderT(node.getLeft());
+        System.out.print(node.getValue()+" ");
+        inOrderT(node.getRight());
+    }
+    public void inorder(){
+        inOrderT(root);
+        System.out.println();
+    }
+    //////////////////////
+    private void postOrderT(Node node){
+        if(node==null) {
+            return;
+        }
+        postOrderT(node.getLeft());
+        postOrderT(node.getRight());
+        System.out.print(node.getValue()+" ");
+
+    }
+    public void postorder(){
+        postOrderT(root);
+        System.out.println();
+    }
+
+
+
+
 
 
     class Node{
@@ -74,24 +111,27 @@ public class BinaryTree {
             return value;
         }
 
-        public Node getLeft() {
-            return left;
-        }
-
-        public Node getRight() {
-            return right;
-        }
-
         public void setValue(int value) {
             this.value = value;
+        }
+
+        public Node getLeft() {
+            return left;
         }
 
         public void setLeft(Node left) {
             this.left = left;
         }
 
+        public Node getRight() {
+            return right;
+        }
+
         public void setRight(Node right) {
             this.right = right;
         }
     }
+
+
+
 }

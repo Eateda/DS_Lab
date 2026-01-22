@@ -4,11 +4,22 @@ public class Main {
     public static void main(String[] args) {
         BinaryTree btree=new BinaryTree(10);
 
-        btree.insertNoda(12);
-        btree.insertNoda(8);
-        btree.insertNoda(14);
-        btree.insertNoda(2);
-        System.out.println(btree.searchNode(8));
-        btree.preOrder();
+        btree.insertNode(12);
+        btree.insertNode(8);
+        btree.insertNode(14);
+        btree.insertNode(2);
+        //System.out.println(  btree.serachNode(8));
+        System.out.println("Preorder traversal:");
+        btree.preorder();
+        System.out.println("Inorder traversal:");
+        btree.inorder();
+        System.out.println("Postorder traversal:");
+        btree.postorder();
+
+
+
+
+
+
     }
 }
